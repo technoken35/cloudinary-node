@@ -26,7 +26,7 @@ var folders = [];
 // parses and returns all request bodies
 app.use(express.json());
 
-app.get('/',  (req, res) => {
+app.get('/', (req, res) => {
   // this will send only recent transactions
   const options = {
     max_results: 15,
@@ -55,9 +55,9 @@ app.get('/folders', (req, res) => {
   });
 });
 
-app.get('/pick-folder',  (req, res) => {
+app.get('/pick-folder', (req, res) => {
   // individual folder resource
-  console.log(await req.body);
+
   cloudinary.api.resources(
     {
       type: 'upload',
