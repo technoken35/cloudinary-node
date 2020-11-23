@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
     res.send(error === undefined ? result.resources : error);
   });
 
-  res.send('cloudinary isnt working');
+  //res.send('cloudinary isnt working');
 
   // this will display folder names for organize images for users
   cloudinary.api.sub_folders('dna-images', (error, result) => {
