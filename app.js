@@ -64,7 +64,7 @@ app.get('/pick-folder', (req, res) => {
       prefix: `${req.body.pathName}/`,
     },
     function (error, result) {
-      res.send(error === undefined ? result : error, req.body);
+      res.send(error === undefined ? result : error);
     }
   );
 });
@@ -79,7 +79,7 @@ app.get('/search', async (req, res) => {
     .execute()
     .then((result, error) => {
       console.log(result);
-      res.send(result, req.body);
+      res.send(result);
     });
 });
 
