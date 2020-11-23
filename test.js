@@ -13,3 +13,23 @@ function mybiggestconfession(num1, num2) {
   console.log(num1 + num2);
 }
 mybiggestconfession(1, 2);
+
+function run() {
+  var raw = JSON.stringify({ folderName: 'unlv' });
+
+  var requestOptions = {
+    method: 'GET',
+    body: raw,
+    redirect: 'follow',
+  };
+
+  fetch(
+    'https://desolate-everglades-01373.herokuapp.com/search',
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log('error', error));
+}
+
+run();
