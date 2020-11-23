@@ -1,8 +1,9 @@
 {
   "name": "node-cloudinary",
+  "entry-point": "app.js",
   "version": "1.0.0",
   "description": "API that will serve endpoints to access cloudinary admin api",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",

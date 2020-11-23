@@ -2,8 +2,8 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const ipAddress = '127.0.0.1';
-const port = 8126;
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 var cors = require('cors');
 var cloudinary = require('cloudinary').v2;
 
@@ -126,6 +126,6 @@ app.post('/new-folder', async (req, res) => {
   );
 });
 
-app.listen(port, ipAddress, () => {
+app.listen(port, host, () => {
   console.log(`listening on http://localhost:${port}`);
 });
