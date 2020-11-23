@@ -73,7 +73,7 @@ app.get('/search', async (req, res) => {
   // UI READY
   // Resources by folder name
   cloudinary.search
-    .expression(`folder:dna-images/${req.body.folder_name}`)
+    .expression(`folder:${req.body.folder_name}`)
     .sort_by('public_id', 'desc')
     .max_results(30)
     .execute()
