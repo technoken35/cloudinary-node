@@ -26,7 +26,7 @@ var folders = [];
 // parses and returns all request bodies
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/',  (req, res) => {
   // this will send only recent transactions
   const options = {
     max_results: 15,
@@ -46,7 +46,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.get('/folders', async (req, res) => {
+app.get('/folders', (req, res) => {
   cloudinary.api.sub_folders('dna-images', (error, result) => {
     // return all subfolders
     folders = result.folders;
@@ -55,7 +55,7 @@ app.get('/folders', async (req, res) => {
   });
 });
 
-app.get('/pick-folder', async (req, res) => {
+app.get('/pick-folder',  (req, res) => {
   // individual folder resource
   console.log(await req.body);
   cloudinary.api.resources(
@@ -69,7 +69,7 @@ app.get('/pick-folder', async (req, res) => {
   );
 });
 
-app.get('/search', async (req, res) => {
+app.get('/search', (req, res) => {
   // UI READY
   // Resources by folder name
   cloudinary.search
@@ -93,7 +93,7 @@ app.get('/search', async (req, res) => {
    function(error, result) {console.log(result, error); });
 }) */
 
-app.post('/delete', async (req, res) => {
+app.post('/delete', (req, res) => {
   // ! There is a issue with locating images
   const rawPublicIDs = [
     'dna-images/albertsons-east-charleston/ductwork_ndnrvu.jpg',
@@ -117,7 +117,7 @@ app.post('/delete', async (req, res) => {
   );
 });
 
-app.post('/new-folder', async (req, res) => {
+app.post('/new-folder', (req, res) => {
   // UI READY
   cloudinary.api.create_folder(
     `dna-images/${req.body.new_folder_name}`,
