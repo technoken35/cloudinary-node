@@ -29,7 +29,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   // this will send only recent transactions
   const options = {
-    max_results: 15,
+    max_results: 25,
   };
 
   cloudinary.api.resources(options, function (error, result) {
