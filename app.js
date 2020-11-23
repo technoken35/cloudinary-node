@@ -64,12 +64,12 @@ app.get('/pick-folder', (req, res) => {
       prefix: `${req.body.pathName}/`,
     },
     function (error, result) {
-      res.send(error === undefined ? result : error);
+      res.send(error === undefined ? result : error, req.body);
     }
   );
 });
 
-app.get('/search', (req, res) => {
+app.get('/search', async (req, res) => {
   // UI READY
   // Resources by folder name
   cloudinary.search
@@ -79,7 +79,7 @@ app.get('/search', (req, res) => {
     .execute()
     .then((result, error) => {
       console.log(result);
-      res.send(result.resources);
+      res.send(result);
     });
 });
 
