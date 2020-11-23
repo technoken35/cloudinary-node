@@ -79,7 +79,7 @@ app.get('/search', (req, res) => {
     .execute()
     .then((result, error) => {
       console.log(result);
-      res.send(result);
+      res.send(result.resources);
     });
 });
 
