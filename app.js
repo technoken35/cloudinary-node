@@ -69,7 +69,7 @@ app.get('/pick-folder', (req, res) => {
   );
 });
 
-app.get('/search', async (req, res) => {
+app.post('/search', async (req, res) => {
   // UI READY
   // Resources by folder name
   cloudinary.search
