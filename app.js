@@ -83,6 +83,12 @@ app.post('/search', async (req, res) => {
     });
 });
 
+app.post('/delete-folder', (req, res) => {
+  cloudinary.api.delete_folder(`${req.body.pathName}`, (error, result) => {
+    res.send(error === undefined ? result : error);
+  });
+});
+
 /* app.post('/upload', async(req,res)=>{
   cloudinary.uploader.upload("gauges.jpg",
   { responsive_breakpoints: 
