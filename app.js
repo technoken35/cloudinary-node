@@ -2,8 +2,8 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const host = '127.0.0.1';
-const port = 8125;
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 var cors = require('cors');
 var cloudinary = require('cloudinary').v2;
 
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
   //res.send('cloudinary isnt working');
 
   // this will display folder names for organize images for users
-  cloudinary.api.sub_folders((error, result) => {
+  cloudinary.api.sub_folders('dna-images', (error, result) => {
     folders = result.folders;
 
     console.log(error, result);
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/folders', (req, res) => {
-  cloudinary.api.sub_folders((error, result) => {
+  cloudinary.api.sub_folders('dna-images', (error, result) => {
     // return all subfolders
     folders = result.folders;
     console.log(error, result);
@@ -97,11 +97,20 @@ app.post('/delete-folder', (req, res) => {
       min_width: 200, 
       max_width: 1000 }}, 
    function(error, result) {console.log(result, error); });
-   new app
 }) */
 
 app.post('/delete', (req, res) => {
   // ! There is a issue with locating images
+  const rawPublicIDs = [
+    'dna-images/albertsons-east-charleston/ductwork_ndnrvu.jpg',
+    'sample.jpg',
+  ];
+
+  // logic for grabbing just the ID string with no file type ending
+  const formattedPublicIDs = rawPublicIDs.map((ID) => {
+    let formattedID = ID.slice(0, ID.length - 4);
+    return formattedID;
+  });
 
   cloudinary.api.delete_resources(
     //UI READY
